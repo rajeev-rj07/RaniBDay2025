@@ -17,7 +17,7 @@ let isTransitioning = false;
 function showNext() {
     if (isTransitioning) return;
     
-    // Don't proceed if we've reached the last image
+    // If we're on the last image, show the birthday message
     if (current === imageCount) {
         showBirthdayMessage();
         return;
@@ -35,11 +35,6 @@ function showNext() {
             current = next;
             showingFirst = false;
             isTransitioning = false;
-            
-            // Check if this was the last image
-            if (current === imageCount) {
-                setTimeout(showBirthdayMessage, 1000);
-            }
         }, 1000);
     } else {
         image1.src = `assets/${next}.jpg`;
@@ -50,11 +45,6 @@ function showNext() {
             current = next;
             showingFirst = true;
             isTransitioning = false;
-            
-            // Check if this was the last image
-            if (current === imageCount) {
-                setTimeout(showBirthdayMessage, 1000);
-            }
         }, 1000);
     }
 }
