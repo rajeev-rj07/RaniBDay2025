@@ -3,13 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slideshow</title>
+    <title>Happy Birthday!</title>
+    <link rel="icon" type="image/png" href="assets/heart_emoji.png">
+    <style>
+        @font-face {
+            font-family: 'DKCrayonCrumble';
+            src: url('Fonts/DKCrayonCrumble.ttf') format('truetype');
+        }
+    </style>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="slideshow-container">
         <img id="slide-image1" src="assets/1.jpg" alt="Slideshow Image 1" style="z-index:2;">
         <img id="slide-image2" src="assets/2.jpg" alt="Slideshow Image 2" style="z-index:1; opacity:0;">
+    </div>
+    <div id="balloons-container"></div>
+    <div id="birthday-message">
+        <div class="message-container">
+            <div class="message-line">
+                <span>H</span><span>a</span><span>p</span><span>p</span><span>y</span>
+            </div>
+            <div class="message-line">
+                <span>B</span><span>i</span><span>r</span><span>t</span><span>h</span><span>d</span><span>a</span><span>y</span>
+            </div>
+            <div class="message-line">
+                <span>M</span><span class="inline-heart"><img src="assets/heart_emoji.png" alt="❤" class="heart-emoji"></span><span>r</span><span>i</span>
+            </div>
+            <div class="message-line">
+                <span>L</span><span>a</span><span>d</span><span>u</span><span>i</span><span>i</span><span>i</span><span>i</span><span>i</span><span>i</span><span>i</span><span>i</span><span>i</span><span>i</span><span>i</span><span>i</span><span>i</span><span>!</span>
+            </div>
+            <div class="heart-container">
+                <img src="assets/heart_emoji.png" alt="Heart" class="heart-emoji">
+            </div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
