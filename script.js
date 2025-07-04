@@ -5,6 +5,26 @@ const image1 = document.getElementById('slide-image1');
 const image2 = document.getElementById('slide-image2');
 const birthdayMessage = document.getElementById('birthday-message');
 const messageSpans = document.querySelectorAll('#birthday-message span');
+const backgroundMusic = document.getElementById('background-music');
+
+// Initialize background music
+function initializeMusic() {
+    if (backgroundMusic) {
+        // Set volume to 0.5 (50%)
+        backgroundMusic.volume = 0.5;
+        
+        // Handle errors
+        backgroundMusic.onerror = () => {
+            console.error('Error loading background music');
+        };
+        
+        // Start playing when the page loads
+        backgroundMusic.play();
+    }
+}
+
+// Call the initialization function
+initializeMusic();
 
 // Ensure initial state
 image1.style.opacity = 1;
