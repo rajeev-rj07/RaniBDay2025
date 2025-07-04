@@ -50,26 +50,31 @@ function showNext() {
     isTransitioning = true;
     const next = (current % imageCount) + 1;
     
+    // Update the inactive image first
     if (showingFirst) {
         image2.src = `assets/${next}.jpg`;
-        image2.style.transition = 'opacity 1s linear';
         image2.style.opacity = 1;
-        setTimeout(() => {
-            image1.style.opacity = 0;
-            current = next;
-            showingFirst = false;
-            isTransitioning = false;
-        }, 1000);
     } else {
         image1.src = `assets/${next}.jpg`;
-        image1.style.transition = 'opacity 1s linear';
         image1.style.opacity = 1;
-        setTimeout(() => {
-            image2.style.opacity = 0;
-            current = next;
-            showingFirst = true;
-            isTransitioning = false;
-        }, 1000);
+    }
+    
+    // Add transition end listener to the active image
+    const activeImage = showingFirst ? image1 : image2;
+    const inactiveImage = showingFirst ? image2 : image1;
+    
+    activeImage.addEventListener('transitionend', () => {
+        activeImage.style.opacity = 0;
+        current = next;
+        showingFirst = !showingFirst;
+        isTransitioning = false;
+    }, { once: true });
+    
+    // Start the transition
+    if (showingFirst) {
+        image1.style.opacity = 0;
+    } else {
+        image2.style.opacity = 0;
     }
 }
 
