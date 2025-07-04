@@ -20,9 +20,9 @@ function initializeMusic() {
         
         // Add click listener to start music
         document.addEventListener('click', () => {
-            if (!backgroundMusic.paused) {
-                backgroundMusic.play();
-            }
+            backgroundMusic.play().catch((e) => {
+                console.error('Playback failed:', e);
+            });
         });
     }
 }
