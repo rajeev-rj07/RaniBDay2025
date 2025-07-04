@@ -18,8 +18,12 @@ function initializeMusic() {
             console.error('Error loading background music');
         };
         
-        // Start playing when the page loads
-        backgroundMusic.play();
+        // Add click listener to start music
+        document.addEventListener('click', () => {
+            if (!backgroundMusic.paused) {
+                backgroundMusic.play();
+            }
+        });
     }
 }
 

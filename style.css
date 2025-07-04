@@ -69,8 +69,8 @@ body {
 .cinnamon-roll {
   position: absolute;
   bottom: -100px;
-  width: 120px;
-  height: 120px;
+  width: 170px;
+  height: 170px;
   animation: floatUp 8s ease-in-out forwards;
   object-fit: contain;
   opacity: 0;
