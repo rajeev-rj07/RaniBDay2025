@@ -80,16 +80,49 @@ function createBalloon() {
     }, (duration * 1000) + delay);
 }
 
+function createCinnamonRoll() {
+    const roll = document.createElement('img');
+    roll.className = 'cinnamon-roll';
+    roll.src = 'assets/cinnamon_roll_in_box.png';
+    
+    // Random horizontal position
+    const posX = Math.random() * window.innerWidth;
+    // Random delay up to 3s
+    const delay = Math.random() * 3000;
+    
+    roll.style.left = `${posX}px`;
+    roll.style.animationDelay = `${delay}ms`;
+    
+    document.getElementById('balloons-container').appendChild(roll);
+    
+    // Remove roll after animation completes
+    setTimeout(() => {
+        roll.remove();
+    }, 8000 + delay);
+}
+
 function startBalloons() {
     // Create initial batch of balloons
     for (let i = 0; i < 20; i++) {
         setTimeout(createBalloon, i * 300);
     }
     
+    // Create initial batch of cinnamon rolls (fewer than balloons)
+    for (let i = 0; i < 5; i++) {
+        setTimeout(createCinnamonRoll, i * 1000);
+    }
+    
     // Keep creating balloons periodically
-    return setInterval(() => {
+    const balloonInterval = setInterval(() => {
         createBalloon();
-    }, 500);
+    }, 1500);
+    
+    // Create cinnamon rolls less frequently
+    const rollInterval = setInterval(() => {
+        createCinnamonRoll();
+    }, 5000);
+    
+    return [balloonInterval, rollInterval];
 }
 
 function showBirthdayMessage() {
