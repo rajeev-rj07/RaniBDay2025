@@ -37,9 +37,17 @@ image1.src = `assets/${current}.jpg`;
 image2.src = `assets/${(current % imageCount) + 1}.jpg`;
 
 let isTransitioning = false;
+let lastClickTime = 0;
+const DOUBLE_CLICK_THRESHOLD = 500; // 500ms between clicks
 
 function showNext() {
-    if (isTransitioning) return;
+    const currentTime = Date.now();
+    
+    // Prevent double-clicks within 500ms
+    if (currentTime - lastClickTime < DOUBLE_CLICK_THRESHOLD) {
+        return;
+    }
+    lastClickTime = currentTime;
     
     // If we're on the last image, show the birthday message
     if (current === imageCount) {
@@ -103,9 +111,12 @@ function createBalloon() {
     
     document.getElementById('balloons-container').appendChild(balloon);
     
-    // Remove balloon after animation completes
+    // Remove balloon after animation
     setTimeout(() => {
-        balloon.remove();
+        balloon.style.animation = 'fadeOut 1s';
+        setTimeout(() => {
+            balloon.remove();
+        }, 1000);
     }, (duration * 1000) + delay);
 }
 
